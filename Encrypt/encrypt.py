@@ -43,9 +43,32 @@ def cipher(message, shift1, shift2, shift3):  # fungsi utama
     return encrypted
 
 
-def encode(message):  # fungsi encode
+def encode(message, lower=False):  # fungsi encode yang menerima huruf kapital
+    if (lower):  # jika dimasukan lower=True, maka hasil encode menjadi huruf kecil
+        message = message.lower()
     return cipher(message, 4, 3, -3)
 
 
 def decode(message):  # fungsi decode
     return cipher(message, -4, -3, 3)
+
+
+texts = ["HELLO WORLD", "Hello, world!", "pA$$w0rD", "tes", "T3st"]
+
+print("MENERIMA UPPER CASE")
+print()
+for text in texts:  # Program normal
+    print("Text:", text)
+    encoded = encode(text)
+    print("Hasil enkripsi:", encoded)
+    print("Hasil dekripsi:", decode(encoded))
+    print()
+
+print("SEMUANYA LOWER CASE")
+print()
+for text in texts:  # Semuanya lower case
+    print("Text:", text)
+    encoded = encode(text, lower=True)
+    print("Hasil enkripsi:", encoded)
+    print("Hasil dekripsi:", decode(encoded))
+    print()
